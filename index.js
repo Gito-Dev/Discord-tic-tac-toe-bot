@@ -100,10 +100,14 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-// Handle slash commands
+// Handle commands starting with L.
 client.on('messageCreate', async (message) => {
-    if (message.content.startsWith('Lstart')) {
-        const args = message.content.split(/\s+/).slice(1);
+    if (!message.content.startsWith('L.')) return;
+
+    const commandBody = message.content.slice(2).trim(); // Remove "L." prefix
+    const [command, ...args] = commandBody.split(/\s+/);
+
+    if (command === 'start') {
         if (args.length < 2) {
             return message.reply('Please mention two players to start the game.');
         }
