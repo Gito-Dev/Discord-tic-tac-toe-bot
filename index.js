@@ -102,7 +102,7 @@ client.on('interactionCreate', async (interaction) => {
 
 // Handle slash commands
 client.on('messageCreate', async (message) => {
-    if (message.content.startsWith('!start')) {
+    if (message.content.startsWith('Lstart')) {
         const args = message.content.split(/\s+/).slice(1);
         if (args.length < 2) {
             return message.reply('Please mention two players to start the game.');
