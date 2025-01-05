@@ -122,6 +122,16 @@ client.on('messageCreate', async (message) => {
             components: renderBoard(games[gameId], gameId),
         });
     }
+
+
+    if (command === 'help') {
+        await message.reply(
+            "Here are the available commands:\n" +
+            "`L.start <player1> <player2>` - Start a new Tic Tac Toe game.\n" +
+            "`L.help` - Show this help message."
+        );
+    }
+    
 });
 
 client.login(process.env.TOKEN);
