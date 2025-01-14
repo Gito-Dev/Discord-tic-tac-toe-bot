@@ -84,15 +84,15 @@ client.on('interactionCreate', async (interaction) => {
             content: `${game.players[game.currentPlayer]} wins! 🎉`,
             components: renderBoard(game, gameId),
         });
-        delete games[gameId]; // End the game
+        delete games[gameId]; 
     } else if (game.board.every((cell) => cell !== null)) {
         await interaction.update({
             content: "It's a tie! 🤝",
             components: renderBoard(game, gameId),
         });
-        delete games[gameId]; // End the game
+        delete games[gameId]; 
     } else {
-        game.currentPlayer = 1 - game.currentPlayer; // Switch players
+        game.currentPlayer = 1 - game.currentPlayer; 
         await interaction.update({
             content: `It's ${game.players[game.currentPlayer]}'s turn!`,
             components: renderBoard(game, gameId),
@@ -100,11 +100,10 @@ client.on('interactionCreate', async (interaction) => {
     }
 });
 
-// Handle commands starting with L.
 client.on('messageCreate', async (message) => {
     if (!message.content.startsWith('L.')) return;
 
-    const commandBody = message.content.slice(2).trim(); // Remove "L." prefix
+    const commandBody = message.content.slice(2).trim(); 
     const [command, ...args] = commandBody.split(/\s+/);
 
     if (command === 'start') {
