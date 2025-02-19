@@ -1,7 +1,7 @@
 
 # Discord tic tac toe 
 
-Two player game.
+Two player game for discord. 
 
 # Installation
 
