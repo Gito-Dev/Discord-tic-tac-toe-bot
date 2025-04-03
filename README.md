@@ -33,3 +33,4 @@ Check the box
 # Host
 
 Chose Railway or Render , import via Github , and create a secret where you will add the discord Token . 
+Have Fun!!
