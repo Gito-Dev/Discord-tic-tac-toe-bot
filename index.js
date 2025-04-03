@@ -9,16 +9,14 @@ const client = new Client({
     ],
 });
 
-const games = {}; // Store ongoing games
+const games = {}; 
 
-// Helper function to create a new game
 const newGame = (player1, player2) => ({
     board: Array(9).fill(null),
     players: [player1, player2],
     currentPlayer: 0,
 });
 
-// Helper function to render the game board as buttons
 const renderBoard = (game, gameId) => {
     const rows = [];
     for (let i = 0; i < 3; i++) {
@@ -31,7 +29,7 @@ const renderBoard = (game, gameId) => {
                     .setCustomId(`${gameId}-${cellIndex}`)
                     .setLabel(cell ? (cell === 'X' ? '❌' : '⭕') : '⬜')
                     .setStyle(ButtonStyle.Secondary)
-                    .setDisabled(!!cell) // Disable button if cell is already taken
+                    .setDisabled(!!cell) 
             );
         }
         rows.push(row);
@@ -39,17 +37,16 @@ const renderBoard = (game, gameId) => {
     return rows;
 };
 
-// Check if there's a winner
 const checkWinner = (board) => {
     const winningCombos = [
         [0, 1, 2],
         [3, 4, 5],
-        [6, 7, 8], // rows
+        [6, 7, 8], 
         [0, 3, 6],
         [1, 4, 7],
-        [2, 5, 8], // columns
+        [2, 5, 8], 
         [0, 4, 8],
-        [2, 4, 6], // diagonals
+        [2, 4, 6], 
     ];
 
     for (let combo of winningCombos) {
@@ -61,7 +58,6 @@ const checkWinner = (board) => {
     return false;
 };
 
-// Handle interactions (button clicks)
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isButton()) return;
 
@@ -113,7 +109,7 @@ client.on('messageCreate', async (message) => {
 
         const player1 = args[0];
         const player2 = args[1];
-        const gameId = message.id; // Use message ID as the game ID
+        const gameId = message.id; 
         games[gameId] = newGame(player1, player2);
 
         await message.reply({
